@@ -1,0 +1,713 @@
+/* WE APPLY THE "MOBILE FIRST" APPROACH 
+All these CSS styles are applied to SMALL SCREENS */
+/* Remove all default CSS styles */
+
+/* Improvements made per Assignment Feedback:
+1. Removed fixed heights causing excessive whitespace
+2. Implemented responsive Flexbox for centering
+3. Simplified layout for better small-screen usability
+4. Fixed invalid CSS nesting in desktop media queries
+*/
+
+/* Dropdown Button */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana;
+}
+
+/* Contact form */
+.char-counter {
+  text-align: right;
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 4px;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.large-text {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+nav {
+  min-height: 5vh;
+  background-color: palegreen;
+  border: solid 2px darkslategrey;
+}
+nav p {
+  font-size: 0.7em;
+  text-align: center;
+  color: darkgreen;
+}
+
+/* Sandwich Menu */
+.sandwich-icon-area {
+  font-size: 2em;
+  float: none;
+  cursor: pointer;
+}
+.overlay {
+  height: 100%;
+  width: 50%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 3;
+}
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 32px;
+}
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 2em;
+  color: white;
+  display: block;
+}
+.close-icon {
+  position: absolute;
+  top: 1em;
+  right: 1.5em;
+  font-size: 4em;
+  color: white;
+}
+.overlay a:hover,
+.overlay a:focus {
+  color: green;
+}
+
+/* Header */
+header {
+  min-height: 15vh;
+  position: relative;
+  margin: 0;
+  background-color: green;
+  border: solid 2px darkblue;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.facebook-logo,
+.google-logo,
+.twitter-x-logo {
+  width: clamp(40px, 10vw, 75px);
+  height: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: left;
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.facebook-logo {
+  background-image: url("Images/facebook-logo.png");
+}
+.google-logo {
+  background-image: url("Images/google-logo.png");
+}
+.twitter-x-logo {
+  background-image: url("Images/twitter-x-logo.png");
+}
+
+.bg-image {
+  height: auto;
+  min-height: 200px;
+  background-image: url("Images/bg_image_hbbeach.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+}
+.bg-text {
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Main */
+main {
+  width: min(1100px, 95%);
+  margin: 0 auto;
+  min-height: auto;
+  padding: 1.5rem 1rem;
+  background-color: white;
+  border: solid 2px darkblue;
+}
+
+/* SIGNIN FORM */
+.signin-form input[type=text],
+.signin-form input[type=email],
+.signin-form select,
+.signin-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.signin-form input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signin-form label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+.signin-form input[type=submit]:hover {
+  background-color: #45a049;
+}
+.signin-form input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+  width: 100%;
+  margin-top: 0;
+}
+.signin-form button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.signin-form .col-25,
+.signin-form .col-75 {
+  width: 100%;
+  margin-top: 0;
+}
+.signin-form .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* SIGNUP FORM */
+.signup-form input[type=text],
+.signup-form input[type=email],
+.signup-form input[type=password],
+.signup-form select,
+.signup-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.signup-form label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+.signup-form input[type=submit],
+.signup-form button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.signup-form .col-25,
+.signup-form .col-75 {
+  width: 100%;
+  margin-top: 0;
+}
+.signup-form .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* RESET FORM */
+.reset-form input[type=email],
+.reset-form input[type=password],
+.reset-form select,
+.reset-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.reset-form label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+.reset-form input[type=submit],
+.reset-form button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reset-form .col-25,
+.reset-form .col-75 {
+  width: 100%;
+  margin-top: 0;
+}
+.reset-form .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* BUTTON GROUP */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.button-group button {
+  flex: 1;
+  width: auto;
+  white-space: nowrap;
+}
+
+
+.button-group input[type=submit] {
+  flex: 1;
+  width: auto;
+  white-space: nowrap;
+}
+
+.signup-prompt {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: -4px;
+  color: #333;
+}
+
+/* CONTACT FORM */
+.contact-form input[type=text],
+.contact-form input[type=email],
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.contact-form label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+.contact-form input[type=submit]:hover {
+  background-color: #45a049;
+}
+.contact-form input[type=submit] {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form .col-25,
+.contact-form .col-75 {
+  width: 100%;
+  margin-top: 0;
+}
+.contact-form .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* NEWSLETTER */
+.newsletter-dropdown {
+  text-align: center;
+  justify-content: center;
+  margin-top: 1.5rem auto 0 auto;
+}
+.newsletter-dropdown summary {
+  display: inline-block;
+  text-align: center;
+  width: 70%;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 1.5s;
+  margin-top: 6px;
+}
+.newsletter-dropdown[open] form {
+  width: 90%;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.newsletter-form .col-25,
+.newsletter-form .col-75 {
+  float: none;
+  width: 60%;
+  margin-top: 6px;
+  align-items: center;
+}
+.newsletter-form label {
+  display: block;
+  margin-bottom: 6px;
+}
+.newsletter-form input[type=submit] {
+  display: block;
+  width: 100px;
+  margin-top: 10px;
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.newsletter-form .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 1rem;
+  background-color: darkslategray;
+  border: solid 2px black;
+}
+footer p {
+  font-size: 1.1em;
+  text-align: center;
+  color: springgreen;
+}
+
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+/* MEDIUM SCREENS */
+@media screen and (min-width: 426px) {
+
+  main {
+    background-color: olivedrab;
+  }
+
+  .signin-dropdown {
+    text-align: center;
+    justify-content: center;
+    margin-top: 1.5rem auto 0 auto;
+  }
+  .signin-dropdown summary {
+    display: inline-block;
+    text-align: center;
+    width: 70%;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 15px 20px;
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 1.5s;
+    margin-top: 6px;
+  }
+  .signin-dropdown[open] form {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .signin-form .col-25,
+  .signin-form .col-75 {
+    width: 60%;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .signin-form label {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .signin-form input[type=submit] {
+    display: block;
+    width: 100px;
+    margin-top: 10px;
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .signin-form .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .button-group {
+    gap: 12px;
+  }
+  .signup-prompt {
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: -4px;
+    color: #333;
+  }
+
+  .contact-dropdown {
+    text-align: center;
+    justify-content: center;
+    margin-top: 1.5rem auto 0 auto;
+  }
+  .contact-dropdown summary {
+    display: inline-block;
+    text-align: center;
+    width: 70%;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 15px 20px;
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 1.5s;
+    margin-top: 6px;
+  }
+  .contact-dropdown[open] form {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .contact-form .col-25,
+  .contact-form .col-75 {
+    float: none;
+    width: 60%;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .contact-form label {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .contact-form input[type=submit] {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  .contact-form .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .newsletter-dropdown {
+    text-align: center;
+    justify-content: center;
+    margin-top: 1.5rem auto 0 auto;
+  }
+  .newsletter-dropdown summary {
+    display: inline-block;
+    text-align: center;
+    width: 70%;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 15px 20px;
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 1.5s;
+    margin-top: 6px;
+  }
+  .newsletter-dropdown[open] form {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .newsletter-form .col-25,
+  .newsletter-form .col-75 {
+    float: none;
+    width: 60%;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .newsletter-form label {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .newsletter-form input[type=submit] {
+    display: block;
+    width: 100px;
+    margin-top: 10px;
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .newsletter-form .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* LARGE SCREENS */
+@media screen and (min-width: 769px) {
+  main {
+    width: 100%;
+    margin: 0;
+    padding: 1.5rem 2rem; /* Optional: add horizontal padding for breathing room */
+    background-color: darkolivegreen;
+  }
+}
+
+  #itemList {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .item-card {
+    width: 23%;
+    margin: 5px;
+    border: 2px solid black;
+    background-color: gainsboro;
+  }
+
+  .contact-form .col-25 {
+    flex: 1;
+    width: 25%;
+    margin-top: 6px;
+  }
+  .contact-form .col-75 {
+    flex: 3;
+    width: 75%;
+    margin-top: 6px;
+  }
+  .contact-form input[type=submit] {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+
+  .contact-form .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .button-group {
+    gap: 14px;
+  }
+  .signup-prompt {
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: -4px;
+    color: #333;
+  }
