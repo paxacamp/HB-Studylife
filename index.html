@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title data-i18n="home_title">Home</title> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!--Navigation Section--> 
+    <nav>
+        <div class="sandwich-icon-area">
+            <p onclick="openNav()">&#9776; <span data-i18n="site_name">Studylife HB</span></p>
+        </div>       
+    </nav>
+
+    <!-- Language Selector -->
+     <div class="language-toggle">
+        <label class="paragraph-text" for="languageSelect" data-i18n="language_label">🌍 Language:</label>
+        <select id="languageSelect" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="mi">Te Reo Māori</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <button onclick="readPage()" class="tts-button">🔊 Read This Page</button>
+
+    <!--The curtain dropdown menu-->
+    <div id="myNav" class="overlay">
+        <p class="close-icon" onclick="closeNav()">&times;</p>
+        <div class="overlay-content">
+            <a href="index.html" data-i18n="nav_home">HOME</a>
+            <a href="explore.html" data-i18n="nav_explore">EXPLORE</a>
+            <a href="about-us.html" data-i18n="nav_about_us">ABOUT US</a>
+            <a href="contact-us.html" data-i18n="nav_contact_us">CONTACT US</a>
+            <a href="account.html" data-i18n="nav_account">ACCOUNT</a>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.display = "block";
+        }
+        function closeNav() {
+            document.getElementById("myNav").style.display = "none";
+        }
+    </script>
+
+    <!--Header Section--> 
+    <header>
+        <div class="bg-image"></div>
+    </header>
+
+    <!--Main Section--> 
+    <main> 
+        <div class="content-wrapper">
+            <p class="title-text" data-i18n="welcome_message">Welcome to Studylife HB!</p>
+            <p class="paragraph-text" data-i18n="welcome_paragraph">
+                This website is part portfolio, part community forum.<br>
+                It serves as a guide to new students entering Hawkes Bay,<br>
+                providing them with guides to study, as well as helpful skills like:<br>
+                cooking, budgeting, healthy eating, and finding clubs
+            </p>
+
+            <div class="spacer"></div>
+         
+            <details class="signin-dropdown">
+                <summary data-i18n="signin_summary">˅ SIGN IN</summary>
+                <div class="container">
+                    <hr>
+                    <form class="signin-form">
+
+                        <div class="row">
+                            <label for="username" data-i18n="username_label">Enter Username/Email</label>
+                            <input type="text" id="username" name="username" placeholder="Enter username/email.." 
+                                data-i18n-placeholder="username_placeholder" maxlength="64">
+                            <div class="char-counter" id="username-counter">0 / 64</div>
+                        </div>
+
+                        <div class="row">
+                            <label for="password" data-i18n="password_label">Password</label>
+                            <input type="password" id="password" name="password" 
+                                placeholder="Enter password.." 
+                                data-i18n-placeholder="password_placeholder"
+                                maxlength="100">
+                            <div class="char-counter" id="password-counter">0 / 100</div>
+                        </div>
+
+                        <div class="action-group">
+                            <button type="submit" class="signin-btn" data-i18n="signin_button">Sign In</button>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="action-group">
+                            <p class="help-text" data-i18n="forgot_password">Forgot your password?</p>
+                            <button type="button" class="reset-btn" data-i18n="reset_password">Reset Password</button>
+                        </div>
+
+                        <div class="action-group">
+                            <p class="help-text" data-i18n="no_account">Don't have an account?</p>
+                            <button type="button" class="signup-btn" data-i18n="signup_button">Proceed to Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </details>
+
+            <div class="spacer"></div>
+
+            <div class="social-signin">
+                <p class="large-text" data-i18n="signin_with">SIGN IN WITH:</p>
+                <p class="spacer"></p>
+                <div class="social-buttons">
+                    <button class="social-btn facebook">
+                        <img src="Images/facebook-logo.png" alt="Facebook" class="social-icon">
+                        <span data-i18n="facebook">Facebook</span>
+                    </button>
+                    <button class="social-btn google">
+                        <img src="Images/google-logo.png" alt="Google" class="social-icon">
+                        <span data-i18n="google">Google</span>
+                    </button>
+                    <button class="social-btn twitter">
+                        <img src="Images/twitter-x-logo.png" alt="Twitter" class="social-icon">
+                        <span data-i18n="twitter">Twitter</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="vertical-center"> 
+        <details class="newsletter-dropdown">
+            <summary data-i18n="newsletter_summary">˅ Subscribe to our newsletter!</summary>
+            <div class="container">
+                <hr>
+                <form class="newsletter-form">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="email" data-i18n="email_label">Email</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="email" id="email" name="email" placeholder="Enter email.." 
+                                data-i18n-placeholder="email_placeholder" maxlength="320">
+                        </div>
+                        <div class="char-counter" id="email-counter">0 / 320</div>
+                        <div class="row">
+                            <div class="col-75">
+                                <input type="submit" value="Send" data-i18n="newsletter_send">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </details>
+        <p data-i18n="footer_credit">ITWD5.130 Website Development<br>Created by Roman Seaton</p>       
+    </footer>
+
+    <script src="javascript.js"></script>
+
+    <script>
+        const translations = {
+            en: {
+                home_title: "Home",
+                site_name: "Studylife HB",
+                language_label: "🌍 Language:",
+                nav_home: "HOME",
+                nav_explore: "EXPLORE",
+                nav_about_us: "ABOUT US",
+                nav_contact_us: "CONTACT US",
+                nav_account: "ACCOUNT",
+                welcome_message: "Welcome to Studylife HB!",
+                welcome_paragraph: "This website is part portfolio, part community forum. It serves as a guide to new students entering Hawkes Bay, providing them with guides to study, as well as helpful skills like: cooking, budgeting, healthy eating, and finding clubs",
+                signin_summary: "˅ SIGN IN",
+                username_label: "Enter Username/Email",
+                username_placeholder: "Enter username/email..",
+                password_label: "Password",
+                password_placeholder: "Enter password..",
+                signin_button: "Sign In",
+                forgot_password: "Forgot your password?",
+                reset_password: "Reset Password",
+                no_account: "Don't have an account?",
+                signup_button: "Proceed to Sign Up",
+                signin_with: "SIGN IN WITH:",
+                facebook: "Facebook",
+                google: "Google",
+                twitter: "Twitter",
+                newsletter_summary: "˅ Subscribe to our newsletter!",
+                email_label: "Email",
+                email_placeholder: "Enter email..",
+                newsletter_send: "Send",
+                footer_credit: "ITWD5.130 Website Development\nCreated by Roman Seaton"
+            },
+            mi: {
+                home_title: "Kāinga",
+                site_name: "Studylife HB",
+                language_label: "🌍 Reo:",
+                nav_home: "KĀINGA",
+                nav_explore: "TŪHURA",
+                nav_about_us: "MŌ MĀTOU",
+                nav_contact_us: "WHAKAPĀ MAI",
+                nav_account: "PŪKETE",
+                welcome_message: "Nau mai ki Studylife HB!",
+                welcome_paragraph: "He paetukutuku tēnei hei whakaatu i ngā mahi, me te tautoko i te hapori. He aratohu mō ngā tauira hou e kuhu ana ki Hawke's Bay, me ngā pūkenga whaihua pērā i te tunu kai, te whakapaunga pūtea, te kai hauora, me te kimi rōpū",
+                signin_summary: "˅ TĀURU",
+                username_label: "Whakaurua Ingoa Kaiwhakamahi/Īmēra",
+                username_placeholder: "Whakaurua ingoa kaiwhakamahi/īmēra..",
+                password_label: "Kupuhipa",
+                password_placeholder: "Whakaurua kupuhipa..",
+                signin_button: "Tāuru",
+                forgot_password: "Kua wareware tō kupuhipa?",
+                reset_password: "Tautuhi anō i te Kupuhipa",
+                no_account: "Kāore anō he pūkete?",
+                signup_button: "Hono mai",
+                signin_with: "TĀURU MĀ:",
+                facebook: "Pukamata",
+                google: "Kūkara",
+                twitter: "Tiwita",
+                newsletter_summary: "˅ Ohauru ki tā mātou pānui!",
+                email_label: "Īmēra",
+                email_placeholder: "Whakaurua īmēra..",
+                newsletter_send: "Tukua",
+                footer_credit: "ITWD5.130 Whakawhanake Paetukutuku\nNā Roman Seaton i waihanga"
+            },
+            es: {
+                home_title: "Inicio",
+                site_name: "Studylife HB",
+                language_label: "🌍 Idioma:",
+                nav_home: "INICIO",
+                nav_explore: "EXPLORAR",
+                nav_about_us: "SOBRE NOSOTROS",
+                nav_contact_us: "CONTÁCTANOS",
+                nav_account: "CUENTA",
+                welcome_message: "¡Bienvenido a Studylife HB!",
+                welcome_paragraph: "Este sitio web es parte portafolio, parte foro comunitario. Sirve como guía para nuevos estudiantes en Hawkes Bay, ofreciéndoles recursos para estudiar y habilidades útiles como: cocinar, presupuestar, comer saludablemente y encontrar clubes",
+                signin_summary: "˅ INICIAR SESIÓN",
+                username_label: "Nombre de usuario o correo electrónico",
+                username_placeholder: "Introduce nombre de usuario/correo..",
+                password_label: "Contraseña",
+                password_placeholder: "Introduce contraseña..",
+                signin_button: "Iniciar sesión",
+                forgot_password: "¿Olvidaste tu contraseña?",
+                reset_password: "Restablecer contraseña",
+                no_account: "¿No tienes una cuenta?",
+                signup_button: "Registrarse",
+                signin_with: "INICIAR SESIÓN CON:",
+                facebook: "Facebook",
+                google: "Google",
+                twitter: "Twitter",
+                newsletter_summary: "˅ ¡Suscríbete a nuestro boletín!",
+                email_label: "Correo electrónico",
+                email_placeholder: "Introduce correo electrónico..",
+                newsletter_send: "Enviar",
+                footer_credit: "ITWD5.130 Desarrollo Web\nCreado por Roman Seaton"
+            }
+            };
+
+
+        function switchLanguage() {
+            const selectedLang = document.getElementById("languageSelect").value;
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            el.textContent = translations[selectedLang][key] || el.textContent;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem("lang") || "en";
+            document.getElementById("languageSelect").value = savedLang;
+            switchLanguage();
+        });
+
+        document.getElementById("languageSelect").addEventListener("change", () => {
+            const lang = document.getElementById("languageSelect").value;
+            localStorage.setItem("lang", lang);
+            switchLanguage();
+        });
+    </script>
+
+    <script>
+        function readPage() {
+            const utterance = new SpeechSynthesisUtterance();
+            const elements = document.querySelectorAll("h1, h2, h3, p, label, summary, button, a");
+            let textToRead = "";
+
+            elements.forEach(el => {
+            if (el.offsetParent !== null) { // only visible elements
+                textToRead += el.innerText + " ";
+            }
+            });
+
+            utterance.text = textToRead.trim();
+            utterance.lang = document.getElementById("languageSelect")?.value || "en-US";
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+
+            speechSynthesis.cancel(); // stop any current speech
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>

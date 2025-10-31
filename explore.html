@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page_title">Explore</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <!--Navigation Section-->
+  <nav>
+    <div class="sandwich-icon-area">
+      <p onclick="openNav()">&#9776; <span data-i18n="site_name">Studylife HB</span></p>
+    </div>
+  </nav>
+
+  <div class="language-toggle">
+    <label class="paragraph-text" for="languageSelect" data-i18n="language_label">🌍 Language:</label>
+    <select id="languageSelect">
+      <option value="en" data-i18n="lang_en">English</option>
+      <option value="mi" data-i18n="lang_mi">Te Reo Māori</option>
+      <option value="es" data-i18n="lang_es">Español</option>
+    </select>
+  </div>
+
+  <!--The curtain dropdown menu-->
+  <div id="myNav" class="overlay">
+    <p class="close-icon" onclick="closeNav()">&times;</p>
+    <div class="overlay-content">
+      <a href="index.html" data-i18n="nav_home">HOME</a>
+      <a href="explore.html" data-i18n="nav_explore">EXPLORE</a>
+      <a href="about-us.html" data-i18n="nav_about">ABOUT US</a>
+      <a href="contact-us.html" data-i18n="nav_contact">CONTACT US</a>
+      <a href="account.html" data-i18n="nav_account">ACCOUNT</a>
+    </div>
+  </div>
+
+  <script>
+    function openNav() { document.getElementById("myNav").style.display = "block"; }
+    function closeNav() { document.getElementById("myNav").style.display = "none"; }
+  </script>
+
+  <!--Header Section-->
+  <header>
+    <div class="bg-image"></div>
+  </header>
+
+  <!--Main Section-->
+  <main>
+    <div class="content-wrapper">
+      <p class="title-text" data-i18n="explore_title">EXPLORE ARTICLES</p>
+      <p class="medium-text" data-i18n="explore_subtitle">Browse through curated titles, explore details, and share your thoughts.</p>
+      <p class="spacer"></p>
+
+      <!-- Search -->
+      <div>
+        <br>
+        <label class="large-text" data-i18n="search_label">Search by title:</label>
+        <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Enter title...">
+      </div>
+
+      <!-- Sort -->
+      <div class="sort-section">
+        <p class="large-text" data-i18n="sort_label">Sort by:</p>
+        <div class="sort-buttons">
+          <button id="sortTitleBtn" data-i18n="sort_title">TITLE</button>
+          <button id="sortAuthorBtn" data-i18n="sort_author">AUTHOR</button>
+          <button id="sortYearBtn" data-i18n="sort_year">YEAR</button>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Topic filter -->
+      <div class="topic-dropdown-section">
+        <p class="large-text" data-i18n="topic_label">Sort by Topic:</p>
+        <div class="topic-dropdown">
+          <select id="topicDropDown">
+            <option value="0" data-i18n="topic_all">ALL</option>
+            <option value="Studyskills" data-i18n="topic_studyskills">Studyskills</option>
+            <option value="Budgeting" data-i18n="topic_budgeting">Budgeting</option>
+            <option value="Groups" data-i18n="topic_groups">Groups</option>
+            <option value="Fitness" data-i18n="topic_fitness">Fitness</option>
+            <option value="Cooking" data-i18n="topic_cooking">Cooking</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <p class="spacer"></p>
+        <div id="itemList"></div>
+      </div>
+    </div>
+  </main>
+
+  <!--Footer Section-->
+  <footer class="vertical-center">
+    <details class="newsletter-dropdown">
+      <summary data-i18n="newsletter_summary">˅ Subscribe to our newsletter!</summary>
+      <div class="container">
+        <hr>
+        <form class="newsletter-form">
+          <div class="row">
+            <div class="col-25">
+              <label for="email" data-i18n="newsletter_email_label">Email</label>
+            </div>
+            <div class="col-75">
+              <input type="email" id="email" name="email" data-i18n-placeholder="newsletter_placeholder" placeholder="Enter email.." maxlength="320">
+            </div>
+            <div class="char-counter" id="email-counter">0 / 320</div>
+            <div class="row">
+              <div class="col-75">
+                <input type="submit" value="Send" data-i18n-value="newsletter_send">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </details>
+    <p data-i18n="footer_credit">ITWD5.130 Website Development<br>Created by Roman Seaton</p>
+  </footer>
+
+  <!-- CHARACTER COUNTER (EMAIL) -->
+  <script>
+    function updateCounter(inputId, counterId, maxLength) {
+      const input = document.getElementById(inputId);
+      const counter = document.getElementById(counterId);
+      if (!input || !counter) return;
+      input.addEventListener("input", () => {
+        counter.textContent = `${input.value.length} / ${maxLength}`;
+      });
+    }
+    updateCounter("email", "email-counter", 320);
+  </script>
+
+  <!-- TRANSLATIONS + ITEMS + RENDER + TTS -->
+  <script>
+    const translations = {
+      en: {
+        page_title: "Explore", site_name: "Studylife HB", language_label: "🌍 Language:",
+        lang_en:"English", lang_mi:"Te Reo Māori", lang_es:"Español",
+        nav_home:"HOME", nav_explore:"EXPLORE", nav_about:"ABOUT US", nav_contact:"CONTACT US", nav_account:"ACCOUNT",
+        explore_title:"EXPLORE ARTICLES", explore_subtitle:"Browse through curated titles, explore details, and share your thoughts.",
+        search_label:"Search by title:", search_placeholder:"Enter title...",
+        sort_label:"Sort by:", sort_title:"TITLE", sort_author:"AUTHOR", sort_year:"YEAR",
+        topic_label:"Sort by Topic:", topic_all:"ALL", topic_studyskills:"Studyskills", topic_budgeting:"Budgeting",
+        topic_groups:"Groups", topic_fitness:"Fitness", topic_cooking:"Cooking",
+        newsletter_summary:"˅ Subscribe to our newsletter!", newsletter_email_label:"Email", newsletter_placeholder:"Enter email..", newsletter_send:"Send",
+        footer_credit:"ITWD5.130 Website Development<br>Created by Roman Seaton",
+        label_author:"Author", label_year:"Year", label_category:"Category", no_items_found:"No items found.",
+        item_1_title:"Mastering Study Skills", item_2_title:"Budgeting Basics", item_3_title:"Group Study Hacks",
+        item_4_title:"Fitness Fundamentals", item_5_title:"Cooking Made Easy", item_6_title:"Effective Note-Taking",
+        cat_Studyskills:"Study Skills", cat_Budgeting:"Budgeting", cat_Groups:"Groups", cat_Fitness:"Fitness", cat_Cooking:"Cooking"
+      },
+      mi: {
+        page_title:"Tūhura", site_name:"Studylife HB", language_label:"🌍 Reo:", lang_en:"Ingarihi", lang_mi:"Te Reo Māori", lang_es:"Pāniora",
+        nav_home:"KĀINGA", nav_explore:"TŪHURA", nav_about:"MŌ MĀTOU", nav_contact:"WHAKAPĀ", nav_account:"PŪKETE",
+        explore_title:"TŪHURA NGĀ TUHINGA", explore_subtitle:"Tirohia ngā taitara kua whakaritea, tūhuratia ngā kōrero, me te tuku whakaaro.",
+        search_label:"Rapua mā te taitara:", search_placeholder:"Tāurua te taitara...", sort_label:"Kōmaka mā:",
+        sort_title:"TAITARA", sort_author:"KAITUHI", sort_year:"TAU",
+        topic_label:"Kōmaka mā te Kaupapa:", topic_all:"KATOA", topic_studyskills:"Ngā Pūkenga Ako", topic_budgeting:"Mahere Pūtea",
+        topic_groups:"Ngā Rōpū", topic_fitness:"Kori Tinana", topic_cooking:"Te Tuninga",
+        newsletter_summary:"˅ Ohauru ki tā mātou pānui!", newsletter_email_label:"Īmēra", newsletter_placeholder:"Tāurua te īmēra..", newsletter_send:"Tuku",
+        footer_credit:"ITWD5.130 Whakawhanaketanga Pae Tukutuku<br>Nā Roman Seaton i Waihanga",
+        label_author:"Kaituhi", label_year:"Tau", label_category:"Kaupapa", no_items_found:"Kāore he tūemi i kitea.",
+        item_1_title:"Te Whakaako i ngā Pūkenga Ako", item_2_title:"Ngā Mātāpono Pūtea", item_3_title:"Ngā Tinihanga Ako ā-Rōpū",
+        item_4_title:"Ngā Mātāpono Kori Tinana", item_5_title:"Te Tuninga Māmā", item_6_title:"Ngā Tikanga Tuhituhi Pai",
+        cat_Studyskills:"Pūkenga Akoranga", cat_Budgeting:"Whakarite Pūtea", cat_Groups:"Rōpū", cat_Fitness:"Whakapakari Tinana", cat_Cooking:"Tunu Kai"
+      },
+      es: {
+        page_title:"Explorar", site_name:"Studylife HB", language_label:"🌍 Idioma:", lang_en:"Inglés", lang_mi:"Maorí", lang_es:"Español",
+        nav_home:"INICIO", nav_explore:"EXPLORAR", nav_about:"SOBRE NOSOTROS", nav_contact:"CONTACTO", nav_account:"CUENTA",
+        explore_title:"EXPLORAR ARTÍCULOS", explore_subtitle:"Explora títulos seleccionados, descubre detalles y comparte tus ideas.",
+        search_label:"Buscar por título:", search_placeholder:"Introducir título...", sort_label:"Ordenar por:",
+        sort_title:"TÍTULO", sort_author:"AUTOR", sort_year:"AÑO",
+        topic_label:"Ordenar por tema:", topic_all:"TODO", topic_studyskills:"Habilidades de estudio", topic_budgeting:"Presupuesto",
+        topic_groups:"Grupos", topic_fitness:"Acondicionamiento físico", topic_cooking:"Cocina",
+        newsletter_summary:"˅ ¡Suscríbete a nuestro boletín!", newsletter_email_label:"Correo electrónico", newsletter_placeholder:"Introduce correo..", newsletter_send:"Enviar",
+        footer_credit:"ITWD5.130 Desarrollo Web<br>Creado por Roman Seaton",
+        label_author:"Autor", label_year:"Año", label_category:"Categoría", no_items_found:"No se encontraron artículos.",
+        item_1_title:"Dominar las Habilidades de Estudio", item_2_title:"Conceptos Básicos de Presupuesto", item_3_title:"Trucos para Estudiar en Grupo",
+        item_4_title:"Fundamentos del Fitness", item_5_title:"Cocinar Fácil", item_6_title:"Toma de Notas Efectiva",
+        cat_Studyskills:"Habilidades de estudio", cat_Budgeting:"Presupuesto", cat_Groups:"Grupos", cat_Fitness:"Acondicionamiento físico", cat_Cooking:"Cocina"
+      }
+    };
+
+    const items = [
+      { id: 1, title: "Mastering Study Skills", author: "Alice Nguyen", year: 2022, category: "Studyskills", image_url: "Images/ArticleImage.jpg" },
+      { id: 2, title: "Budgeting Basics", author: "Ben Smith", year: 2023, category: "Budgeting", image_url: "Images/ArticleImage.jpg" },
+      { id: 3, title: "Group Study Hacks", author: "Carla Jones", year: 2021, category: "Groups", image_url: "Images/ArticleImage.jpg" },
+      { id: 4, title: "Fitness Fundamentals", author: "David Lee", year: 2023, category: "Fitness", image_url: "Images/ArticleImage.jpg" },
+      { id: 5, title: "Cooking Made Easy", author: "Emma Watson", year: 2022, category: "Cooking", image_url: "Images/ArticleImage.jpg" },
+      { id: 6, title: "Effective Note-Taking", author: "Frank Harris", year: 2021, category: "Studyskills", image_url: "Images/ArticleImage.jpg" }
+    ];
+
+    function t(key) {
+      const lang = localStorage.getItem("lang") || "en";
+      return (translations[lang] && translations[lang][key]) || translations.en[key] || key;
+    }
+
+    function getTranslatedTitle(item) {
+      const key = `item_${item.id}_title`;
+      return translations[localStorage.getItem("lang") || "en"][key] || item.title;
+    }
+
+    function renderItems(filteredItems = items) {
+      const container = document.getElementById("itemList");
+      if (!container) return;
+      const lang = localStorage.getItem("lang") || "en";
+
+      if (!filteredItems.length) {
+        container.innerHTML = `<p style='text-align:center; font-weight:bold;'>${t("no_items_found")}</p>`;
+        return;
+      }
+
+      container.innerHTML = "";
+      filteredItems.forEach(item => {
+        const titleKey = `item_${item.id}_title`;
+        const catKey = `cat_${item.category}`;
+        const displayedTitle = t(titleKey) || item.title;
+        const displayedCat = t(catKey) || item.category;
+
+        const card = document.createElement("div");
+        card.className = "item-card";
+        card.innerHTML = `
+          <img src="${item.image_url}" alt="${displayedTitle}" />
+          <h3>${displayedTitle}</h3>
+          <p><strong>${t("label_author") || "Author"}:</strong> ${item.author}</p>
+          <p><strong>${t("label_year") || "Year"}:</strong> ${item.year}</p>
+          <p><strong>${t("label_category") || "Category"}:</strong> ${displayedCat}</p>
+          <button class="tts-btn">🔊 Listen</button>
+        `;
+        container.appendChild(card);
+
+        const ttsBtn = card.querySelector(".tts-btn");
+        ttsBtn.addEventListener("click", () => {
+          const utter = new SpeechSynthesisUtterance(
+            `${displayedTitle}. ${t("label_author")}: ${item.author}. ${t("label_year")}: ${item.year}. ${t("label_category")}: ${displayedCat}.`
+          );
+          const currentLang = localStorage.getItem("lang") || "en";
+          if(currentLang === "mi") utter.lang = "mi-NZ";
+          else if(currentLang === "es") utter.lang = "es-ES";
+          else utter.lang = "en-US";
+
+          speechSynthesis.cancel();
+          speechSynthesis.speak(utter);
+        });
+      });
+    }
+
+    function displayFilteredItems() {
+      const input = document.getElementById("searchInput");
+      const q = (input && input.value || "").trim().toLowerCase();
+      let filtered = items.slice();
+
+      if (q) {
+        filtered = filtered.filter(item => {
+          const original = item.title.toLowerCase();
+          const translated = getTranslatedTitle(item).toLowerCase();
+          return original.includes(q) || translated.includes(q);
+        });
+      }
+
+      const topicSelect = document.getElementById("topicDropDown");
+      if (topicSelect && topicSelect.value !== "0") {
+        filtered = filtered.filter(i => i.category === topicSelect.value);
+      }
+
+      renderItems(filtered);
+    }
+
+    function sortByTitle() {
+      const sorted = items.slice().sort((a,b) => getTranslatedTitle(a).localeCompare(getTranslatedTitle(b)));
+      renderItems(sorted);
+    }
+    function sortByAuthor() { renderItems(items.slice().sort((a,b)=>a.author.localeCompare(b.author))); }
+    function sortByYear() { renderItems(items.slice().sort((a,b)=>a.year-b.year)); }
+
+    function applyTranslationsToPage() {
+      document.querySelectorAll("[data-i18n]").forEach(el => el.innerHTML = t(el.getAttribute("data-i18n")));
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => el.placeholder = t(el.getAttribute("data-i18n-placeholder")));
+      document.querySelectorAll("[data-i18n-value]").forEach(el => el.value = t(el.getAttribute("data-i18n-value")));
+      document.querySelectorAll("select option[data-i18n]").forEach(opt => opt.innerHTML = t(opt.getAttribute("data-i18n")));
+      document.title = t("page_title");
+    }
+
+    function init() {
+      const saved = localStorage.getItem("lang") || "en";
+      const langSelect = document.getElementById("languageSelect");
+      if (langSelect) langSelect.value = saved;
+      if (langSelect) langSelect.addEventListener("change", e => { localStorage.setItem("lang", e.target.value); applyTranslationsToPage(); renderItems(); });
+      const searchInput = document.getElementById("searchInput");
+      if (searchInput) searchInput.addEventListener("input", displayFilteredItems);
+      const st = document.getElementById("sortTitleBtn");
+      const sa = document.getElementById("sortAuthorBtn");
+      const sy = document.getElementById("sortYearBtn");
+      if (st) st.addEventListener("click", sortByTitle);
+      if (sa) sa.addEventListener("click", sortByAuthor);
+      if (sy) sy.addEventListener("click", sortByYear);
+      const topicDropDown = document.getElementById("topicDropDown");
+      if (topicDropDown) topicDropDown.addEventListener("change", displayFilteredItems);
+      applyTranslationsToPage();
+      renderItems();
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

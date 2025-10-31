@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<!------------------------------HEAD------------------------------------------------>
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title data-i18n="page_title">About Us</title> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<!------------------------------BODY------------------------------------------------>
+<body>
+    <!--Navigation Section--> 
+    <nav>
+        <div class="sandwich-icon-area">
+            <p onclick="openNav()">&#9776; <span data-i18n="site_name">Studylife HB</span></p>
+        </div>       
+    </nav>
+
+    <div class="language-toggle">
+        <label class="paragraph-text" for="languageSelect" data-i18n="language_label">🌍 Language:</label>
+        <select id="languageSelect" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="mi">Te Reo Māori</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <!-- TTS Button -->
+    <button onclick="readPage()" class="tts-button">🔊 Read This Page</button>
+
+    <!--Curtain dropdown menu-->
+    <div id="myNav" class="overlay">
+        <p class="close-icon" onclick="closeNav()">&times;</p>
+        <div class="overlay-content">
+            <a href="index.html" data-i18n="nav_home">HOME</a>
+            <a href="explore.html" data-i18n="nav_explore">EXPLORE</a>
+            <a href="about-us.html" data-i18n="nav_about">ABOUT US</a>
+            <a href="contact-us.html" data-i18n="nav_contact">CONTACT US</a>
+            <a href="account.html" data-i18n="nav_account">ACCOUNT</a>
+        </div>
+    </div>
+
+    <script>
+        function openNav() { document.getElementById("myNav").style.display = "block"; }
+        function closeNav() { document.getElementById("myNav").style.display = "none"; }
+    </script>
+    
+    <!--Header Section--> 
+    <header>
+        <div class="bg-image"></div>
+    </header>
+    
+    <!--Main Section--> 
+    <main>
+        <div class="content-wrapper">
+            <p class="title-text" data-i18n="about_title">ABOUT US</p>
+            
+            <section class="about-intro">
+                <p class="medium-text" data-i18n="about_intro">
+                    Welcome to Studylife HB! We are dedicated to supporting students across Hawke's Bay
+                    with resources, guidance, and community initiatives designed to enhance your academic journey.
+                </p>
+            </section>
+            
+            <section class="mission-vision">
+                <p class="large-text" data-i18n="mission_title">Our Mission</p>
+                <p class="medium-text" data-i18n="mission_text">
+                    To provide accessible and reliable academic resources that empower students to succeed.
+                </p>
+                <p class="large-text" data-i18n="vision_title">Our Vision</p>
+                <p class="medium-text" data-i18n="vision_text">
+                    To be the leading student support platform in Hawke's Bay, fostering learning, growth, and collaboration.
+                </p>
+            </section>
+            
+            <section class="team">
+                <p class="large-text" data-i18n="team_title">Meet the Team</p>
+                <p class="medium-text" data-i18n="team_text">
+                    Our team is composed of passionate educators, student advocates, and developers committed to enhancing the student experience.
+                </p>
+                <ul class="team-list paragraph-text">
+                    <li><strong>Roman Seaton</strong> – <span data-i18n="team_founder">Founder & Web Developer</span></li>
+                    <li><strong>Jane Doe</strong> – <span data-i18n="team_coordinator">Student Support Coordinator</span></li>
+                    <li><strong>John Smith</strong> – <span data-i18n="team_outreach">Content & Outreach</span></li>
+                </ul>
+            </section>
+            
+            <section class="location">
+                <p class="large-text" data-i18n="visit_title">Visit Us</p>
+                <p class="medium-text" data-i18n="visit_address">501 Gloucester Street, Taradale, Napier 4112</p>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3076.5718835299713!2d176.8348112759682!3d-39.546710871592616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d69b41600f98c3f%3A0xb76385bc57ba6049!2s501%20Gloucester%20Street%2C%20Taradale%2C%20Napier%204112!5e0!3m2!1sen!2snz!4v1756341123034!5m2!1sen!2snz"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!--Footer Section--> 
+    <footer class="vertical-center"> 
+        <details class="newsletter-dropdown">
+            <summary data-i18n="newsletter_summary">˅ Subscribe to our newsletter!</summary>
+            <div class="container">
+                <hr>
+                <form class="newsletter-form">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="newsletter-email" data-i18n="newsletter_email_label">Email</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="email" id="newsletter-email" name="email" placeholder="Enter email.." maxlength="320" data-i18n-placeholder="newsletter_placeholder">
+                        </div>
+                        <div class="char-counter" id="newsletter-email-counter">0 / 320</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            <input type="submit" value="Send" data-i18n-value="newsletter_send">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </details>
+        <p data-i18n="footer_credit">ITWD5.130 Website Development<br>Created by Roman Seaton</p>       
+    </footer>
+
+    <script src="javascript.js"></script>
+    
+    <script>
+        function updateCounter(inputId, counterId, maxLength) {
+            const input = document.getElementById(inputId);
+            const counter = document.getElementById(counterId);
+            if (!input || !counter) return;
+            input.addEventListener("input", () => {
+                counter.textContent = `${input.value.length} / ${maxLength}`;
+            });
+        }
+        updateCounter("newsletter-email", "newsletter-email-counter", 320);
+    </script>
+
+    <script>
+        const translations = {
+            en: {
+                page_title: "About Us",
+                site_name: "Studylife HB",
+                language_label: "🌍 Language:",
+                nav_home: "HOME",
+                nav_explore: "EXPLORE",
+                nav_about: "ABOUT US",
+                nav_contact: "CONTACT US",
+                nav_account: "ACCOUNT",
+                about_title: "ABOUT US",
+                about_intro: "Welcome to Studylife HB! We are dedicated to supporting students across Hawke's Bay with resources, guidance, and community initiatives designed to enhance your academic journey.",
+                mission_title: "Our Mission",
+                mission_text: "To provide accessible and reliable academic resources that empower students to succeed.",
+                vision_title: "Our Vision",
+                vision_text: "To be the leading student support platform in Hawke's Bay, fostering learning, growth, and collaboration.",
+                team_title: "Meet the Team",
+                team_text: "Our team is composed of passionate educators, student advocates, and developers committed to enhancing the student experience.",
+                team_founder: "Founder & Web Developer",
+                team_coordinator: "Student Support Coordinator",
+                team_outreach: "Content & Outreach",
+                visit_title: "Visit Us",
+                visit_address: "501 Gloucester Street, Taradale, Napier 4112",
+                newsletter_summary: "˅ Subscribe to our newsletter!",
+                newsletter_email_label: "Email",
+                newsletter_placeholder: "Enter email..",
+                newsletter_send: "Send",
+                footer_credit: "ITWD5.130 Website Development<br>Created by Roman Seaton"
+            },
+            mi: {
+                page_title: "Mō Mātou",
+                site_name: "Studylife HB",
+                language_label: "🌍 Reo:",
+                nav_home: "KĀINGA",
+                nav_explore: "TŪHURA",
+                nav_about: "MŌ MĀTOU",
+                nav_contact: "WHAKAPĀ",
+                nav_account: "PŪKETE",
+                about_title: "MŌ MĀTOU",
+                about_intro: "Nau mai ki Studylife HB! E ū ana mātou ki te tautoko i ngā tauira puta noa i Hawke's Bay mā ngā rauemi, aratohu, me ngā kaupapa hapori hei whakapakari i tō haerenga mātauranga.",
+                mission_title: "Tō Mātou Mahi",
+                mission_text: "Hei whakarato i ngā rauemi mātauranga whai wāhi me te pono hei whakakaha i ngā tauira kia angitu.",
+                vision_title: "Tō Mātou Moemoeā",
+                vision_text: "Hei arahi i te papa tautoko tauira i Hawke's Bay, e whakawhanake ana i te ako, te tipu, me te mahi tahi.",
+                team_title: "Tutaki ki te Rōpū",
+                team_text: "Ko tā mātou rōpū he kaiako hihiri, kaitautoko tauira, me ngā kaiwhakawhanake e ū ana ki te whakapai ake i te wheako tauira.",
+                team_founder: "Kaihanga & Pae Tukutuku",
+                team_coordinator: "Kaitautoko Tauira",
+                team_outreach: "Ngā Ihirangi me te Tukanga",
+                visit_title: "Haere Mai ki A Tatou",
+                visit_address: "501 Gloucester Street, Taradale, Napier 4112",
+                newsletter_summary: "˅ Ohauru ki tā mātou pānui!",
+                newsletter_email_label: "Īmēra",
+                newsletter_placeholder: "Tāurua te īmēra..",
+                newsletter_send: "Tuku",
+                footer_credit: "ITWD5.130 Whakawhanaketanga Pae Tukutuku<br>Nā Roman Seaton i Waihanga"
+            },
+            es: {
+                page_title: "Sobre Nosotros",
+                site_name: "Studylife HB",
+                language_label: "🌍 Idioma:",
+                nav_home: "INICIO",
+                nav_explore: "EXPLORAR",
+                nav_about: "SOBRE NOSOTROS",
+                nav_contact: "CONTACTO",
+                nav_account: "CUENTA",
+                about_title: "SOBRE NOSOTROS",
+                about_intro: "¡Bienvenido a Studylife HB! Estamos dedicados a apoyar a los estudiantes de Hawke's Bay con recursos, orientación e iniciativas comunitarias diseñadas para mejorar su trayectoria académica.",
+                mission_title: "Nuestra Misión",
+                mission_text: "Proporcionar recursos académicos accesibles y fiables que empoderen a los estudiantes para tener éxito.",
+                vision_title: "Nuestra Visión",
+                vision_text: "Ser la plataforma líder de apoyo estudiantil en Hawke's Bay, fomentando el aprendizaje, el crecimiento y la colaboración.",
+                team_title: "Conoce al Equipo",
+                team_text: "Nuestro equipo está compuesto por educadores apasionados, defensores de los estudiantes y desarrolladores comprometidos con mejorar la experiencia del estudiante.",
+                team_founder: "Fundador & Desarrollador Web",
+                team_coordinator: "Coordinador de Apoyo Estudiantil",
+                team_outreach: "Contenido & Alcance",
+                visit_title: "Visítanos",
+                visit_address: "501 Gloucester Street, Taradale, Napier 4112",
+                newsletter_summary: "˅ ¡Suscríbete a nuestro boletín!",
+                newsletter_email_label: "Correo electrónico",
+                newsletter_placeholder: "Introduce correo..",
+                newsletter_send: "Enviar",
+                footer_credit: "ITWD5.130 Desarrollo Web<br>Creado por Roman Seaton"
+            }
+        };
+
+        function switchLanguage() {
+            const selectedLang = document.getElementById("languageSelect").value;
+
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                el.innerHTML = translations[selectedLang][key] || el.innerHTML;
+            });
+
+            document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                const key = el.getAttribute("data-i18n-placeholder");
+                el.placeholder = translations[selectedLang][key] || el.placeholder;
+            });
+
+            document.querySelectorAll("[data-i18n-value]").forEach(el => {
+                const key = el.getAttribute("data-i18n-value");
+                el.value = translations[selectedLang][key] || el.value;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem("lang") || "en";
+            document.getElementById("languageSelect").value = savedLang;
+            switchLanguage();
+        });
+
+        document.getElementById("languageSelect").addEventListener("change", () => {
+            localStorage.setItem("lang", document.getElementById("languageSelect").value);
+        });
+    </script>
+
+    <!-- TTS Script -->
+    <script>
+        function readPage() {
+            const utterance = new SpeechSynthesisUtterance();
+            const elements = document.querySelectorAll("h1, h2, h3, p, label, summary, button, a");
+            let textToRead = "";
+
+            elements.forEach(el => {
+                if (el.offsetParent !== null) { // only visible elements
+                    textToRead += el.innerText + " ";
+                }
+            });
+
+            utterance.text = textToRead.trim();
+
+            // Map selected language to SpeechSynthesis language codes
+            const langSelect = document.getElementById("languageSelect");
+            const langMap = { en: "en-US", mi: "mi-NZ", es: "es-ES" };
+            utterance.lang = langMap[langSelect.value] || "en-US";
+
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+
+            speechSynthesis.cancel(); // stop any current speech
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>

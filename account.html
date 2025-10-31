@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title data-i18n="account_title">Account</title> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Optional: style TTS button */
+        #tts-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+        }
+        #tts-btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <!--Navigation Section--> 
+    <nav>
+        <div class="sandwich-icon-area">
+            <p onclick="openNav()">&#9776; <span data-i18n="site_name">Studylife HB</span></p>
+        </div>       
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="language-toggle">
+        <label for="languageSelect" data-i18n="language_label">🌍 Language:</label>
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="mi">Te Reo Māori</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <!-- Curtain dropdown menu -->
+    <div id="myNav" class="overlay">
+        <p class="close-icon" onclick="closeNav()">&times;</p>
+        <div class="overlay-content">
+            <a href="index.html" data-i18n="nav_home">HOME</a>
+            <a href="explore.html" data-i18n="nav_explore">EXPLORE</a>
+            <a href="about-us.html" data-i18n="nav_about_us">ABOUT US</a>
+            <a href="contact-us.html" data-i18n="nav_contact_us">CONTACT US</a>
+            <a href="account.html" data-i18n="nav_account">ACCOUNT</a>
+        </div>
+    </div>
+
+    <script>
+        function openNav() { document.getElementById("myNav").style.display = "block"; }
+        function closeNav() { document.getElementById("myNav").style.display = "none"; }
+    </script>
+
+    <!--Main Section--> 
+    <main> 
+        <div class="content-wrapper" style="text-align:center; margin-top:50px;">
+            <p class="title-text" style="font-size:2rem; font-weight:bold;" id="signInMessage" data-i18n="must_sign_in">
+                YOU MUST BE SIGNED IN TO ACCESS THIS
+            </p>
+            <button id="tts-btn" onclick="speakMessage()" data-i18n="tts_button">🔊 Read Aloud</button>
+        </div>
+    </main>
+
+    <footer class="vertical-center"> 
+        <p data-i18n="footer_credit">ITWD5.130 Website Development<br>Created by Roman Seaton</p>       
+    </footer>
+
+    <script>
+        const translations = {
+            en: { site_name: "Studylife HB", language_label: "🌍 Language:", nav_home: "HOME", nav_explore: "EXPLORE", nav_about_us: "ABOUT US", nav_contact_us: "CONTACT US", nav_account: "ACCOUNT", must_sign_in: "YOU MUST BE SIGNED IN TO ACCESS THIS", tts_button: "🔊 Read Aloud", footer_credit: "ITWD5.130 Website Development\nCreated by Roman Seaton" },
+            mi: { site_name: "Studylife HB", language_label: "🌍 Reo:", nav_home: "KĀINGA", nav_explore: "TŪHURA", nav_about_us: "MŌ MĀTOU", nav_contact_us: "WHAKAPĀ MAI", nav_account: "PŪKETE", must_sign_in: "ME TĀURU KIA WHAKAURU KI TE WHAKAURU", tts_button: "🔊 Pānuitia", footer_credit: "ITWD5.130 Whakawhanake Paetukutuku\nNā Roman Seaton i waihanga" },
+            es: { site_name: "Studylife HB", language_label: "🌍 Idioma:", nav_home: "INICIO", nav_explore: "EXPLORAR", nav_about_us: "SOBRE NOSOTROS", nav_contact_us: "CONTÁCTENOS", nav_account: "CUENTA", must_sign_in: "DEBES INICIAR SESIÓN PARA ACCEDER A ESTO", tts_button: "🔊 Leer en voz alta", footer_credit: "ITWD5.130 Desarrollo Web\nCreado por Roman Seaton" }
+        };
+
+        function switchLanguage() {
+            const selectedLang = document.getElementById("languageSelect").value;
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                el.textContent = translations[selectedLang][key] || el.textContent;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem("lang") || "en";
+            document.getElementById("languageSelect").value = savedLang;
+            switchLanguage();
+        });
+
+        document.getElementById("languageSelect").addEventListener("change", () => {
+            const lang = document.getElementById("languageSelect").value;
+            localStorage.setItem("lang", lang);
+            switchLanguage();
+        });
+
+        // TTS function
+        function speakMessage() {
+            const message = document.getElementById("signInMessage").textContent;
+            const utterance = new SpeechSynthesisUtterance(message);
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>

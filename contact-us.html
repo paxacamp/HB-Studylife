@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<!------------------------------HEAD------------------------------------------------>
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title data-i18n="contact_title">Contact Us</title> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<!------------------------------BODY------------------------------------------------>
+<body>
+    <!--Navigation Section--> 
+    <nav>
+        <div class="sandwich-icon-area">
+            <p onclick="openNav()">&#9776; <span data-i18n="nav_brand">Studylife HB</span></p>
+        </div>       
+    </nav>
+
+    <div class="language-toggle">
+        <label class="paragraph-text" for="languageSelect" data-i18n="language_label">🌍 Language:</label>
+        <select id="languageSelect" onchange="switchLanguage()">
+            <option value="en" data-i18n="lang_en">English</option>
+            <option value="mi" data-i18n="lang_mi">Te Reo Māori</option>
+            <option value="es" data-i18n="lang_es">Español</option>
+        </select>
+    </div>
+
+    <!--Curtain dropdown menu-->
+    <div id="myNav" class="overlay">
+        <p class="close-icon" onclick="closeNav()">&times;</p>
+        <div class="overlay-content">
+            <a href="index.html" data-i18n="nav_home">HOME</a>
+            <a href="explore.html" data-i18n="nav_explore">EXPLORE</a>
+            <a href="about-us.html" data-i18n="nav_about">ABOUT US</a>
+            <a href="contact-us.html" data-i18n="nav_contact">CONTACT US</a>
+            <a href="account.html" data-i18n="nav_account">ACCOUNT</a>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.display = "block";
+        }
+        function closeNav() {
+            document.getElementById("myNav").style.display = "none";
+        }
+    </script>
+    
+    <!--Header Section--> 
+    <header>
+        <div class="bg-image"></div>
+    </header>
+    
+    <!--Main Section--> 
+    <main id="main-content">
+        <div class="content-wrapper">
+            <p class="title-text" data-i18n="contact_heading">CONTACT US</p>
+            <p class="medium-text" data-i18n="contact_hours">Open Monday through Thursday, from 9:00am to 5:00pm</p>
+            <p class="large-text">enquiry@HBSFG.co.nz</p>
+            <p class="large-text">06 *** ****</p>
+            <p class="medium-text" data-i18n="after_hours">AFTER HOURS CALLS</p>
+            <p class="large-text">06 *** ***0</p>
+            <div class="spacer"></div>
+
+            <details class="contact-dropdown">
+                <summary data-i18n="contact_summary">˅ Drop us an email</summary>
+                <div class="container">
+                    <hr>
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="subject" data-i18n="label_subject">Subject</label>
+                            </div>
+                            <div class="col-75">
+                                <select id="subjectSelect" name="Subject">
+                                    <option value="Question" data-i18n="opt_question">I would like to ask a question</option>
+                                    <option value="Complaint" data-i18n="opt_complaint">I would like to make a complaint</option>
+                                    <option value="Review" data-i18n="opt_review">I would like to leave a review</option>
+                                    <option value="Security" data-i18n="opt_security">My account has been hacked</option>
+                                    <option value="Other" data-i18n="opt_other">Other</option>
+                                </select>
+                                <textarea id="customSubject" name="customSubject"
+                                    data-i18n-placeholder="ph_custom_subject"
+                                    placeholder="Enter your subject..."
+                                    style="display:none; margin-top:8px;"
+                                    maxlength="70"></textarea>
+                                <div class="char-counter" id="customSubject-counter" style="display:none;">0 / 70</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="fname" data-i18n="label_fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" data-i18n-placeholder="ph_fname" placeholder="Your name.." maxlength="40">
+                            <div class="char-counter" id="fname-counter">0 / 40</div>
+                        </div>
+
+                        <div class="row">
+                            <label for="lname" data-i18n="label_lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" data-i18n-placeholder="ph_lname" placeholder="Your last name.." maxlength="40">
+                            <div class="char-counter" id="lname-counter">0 / 40</div>
+                        </div>
+
+                        <div class="row">
+                            <label for="email" data-i18n="label_email">Email</label>
+                            <input type="email" id="contact-email" name="email" data-i18n-placeholder="ph_email" placeholder="Enter email.." maxlength="320">
+                            <div class="char-counter" id="contact-email-counter">0 / 320</div>
+                        </div>
+
+                        <div class="row">
+                            <label for="mobile" data-i18n="label_mobile">NZ Mobile number (optional)</label>
+                            <input type="text" id="mobile" name="mobile" data-i18n-placeholder="ph_mobile" placeholder="Enter NZ mobile number.." maxlength="11">
+                            <div class="char-counter" id="mobile-counter">0 / 11</div>
+                        </div>
+
+                        <div class="row">
+                            <label for="content" data-i18n="label_message">Message</label>
+                            <textarea id="content" name="content" data-i18n-placeholder="ph_message" placeholder="Enter message content.." style="height:200px" maxlength="500"></textarea>
+                            <div class="char-counter" id="content-counter">0 / 500</div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-75">
+                                <input type="submit" value="Submit" data-i18n-placeholder="btn_submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </details>
+
+            <div>
+                <div style="text-align: center;">
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3076.5718835299713!2d176.8348112759682!3d-39.546710871592616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d69b41600f98c3f%3A0xb76385bc57ba6049!2s501%20Gloucester%20Street%2C%20Taradale%2C%20Napier%204112!5e0!3m2!1sen!2snz!4v1756341123034!5m2!1sen!2snz"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                <p class="large-text" data-i18n="find_us">FIND US AT:</p>
+                <p class="medium-text" data-i18n="address">501 Gloucester Street, Taradale, Napier 4112</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- TTS Button -->
+    <button class="tts-button" id="ttsBtn">🔊 Read</button>
+
+    <!--Footer Section--> 
+    <footer class="vertical-center"> 
+        <details class="newsletter-dropdown">
+            <summary data-i18n="newsletter_title">˅ Subscribe to our newsletter!</summary>
+            <div class="container">
+                <hr>
+                <form class="newsletter-form">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="newsletter-email" data-i18n="label_email">Email</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="email" id="newsletter-email" name="email" data-i18n-placeholder="ph_email" placeholder="Enter email.." maxlength="320">
+                        </div>
+                        <div class="char-counter" id="newsletter-email-counter">0 / 320</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            <input type="submit" value="Send" data-i18n-placeholder="btn_send">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </details>
+        <p data-i18n="footer_credit">ITWD5.130 Website Development<br>Created by Roman Seaton</p>       
+    </footer>
+
+    <!-- JavaScript file and counter logic -->
+    <script src="javascript.js"></script>
+
+    <script>
+        function updateCounter(inputId, counterId, maxLength) {
+            const input = document.getElementById(inputId);
+            const counter = document.getElementById(counterId);
+            if (!input || !counter) return;
+            input.addEventListener("input", () => {
+                counter.textContent = `${input.value.length} / ${maxLength}`;
+            });
+        }
+
+        // Contact form counters
+        updateCounter("fname", "fname-counter", 40);
+        updateCounter("lname", "lname-counter", 40);
+        updateCounter("contact-email", "contact-email-counter", 320);
+        updateCounter("mobile", "mobile-counter", 11);
+        updateCounter("content", "content-counter", 500);
+        updateCounter("customSubject", "customSubject-counter", 70);
+
+        // Newsletter counter
+        updateCounter("newsletter-email", "newsletter-email-counter", 320);
+
+        // Show/hide custom subject input
+        document.getElementById("subjectSelect").addEventListener("change", function () {
+            const customSubject = document.getElementById("customSubject");
+            const customCounter = document.getElementById("customSubject-counter");
+            if (this.value === "Other") {
+                customSubject.style.display = "block";
+                customSubject.required = true;
+                customCounter.style.display = "block";
+            } else {
+                customSubject.style.display = "none";
+                customSubject.required = false;
+                customSubject.value = "";
+                customCounter.style.display = "none";
+            }
+        });
+
+        // Text-to-Speech
+        document.getElementById("ttsBtn").addEventListener("click", () => {
+            const content = document.getElementById("main-content").innerText;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(content);
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Text-to-Speech not supported in this browser.");
+            }
+        });
+    </script>
+
+    <!-- i18n System -->
+    <script>
+        const translations = { /* ... your existing translation objects ... */ };
+
+        function switchLanguage() {
+            const selectedLang = document.getElementById("languageSelect").value;
+
+            // text content
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                el.innerHTML = translations[selectedLang][key] || el.innerHTML;
+            });
+
+            // placeholders
+            document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                const key = el.getAttribute("data-i18n-placeholder");
+                el.placeholder = translations[selectedLang][key] || el.placeholder;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem("lang") || "en";
+            document.getElementById("languageSelect").value = savedLang;
+            switchLanguage();
+        });
+
+        document.getElementById("languageSelect").addEventListener("change", () => {
+            localStorage.setItem("lang", document.getElementById("languageSelect").value);
+        });
+    </script>
+</body>
+</html>
